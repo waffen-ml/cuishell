@@ -1,7 +1,7 @@
 import os
 from time import sleep
 from string import punctuation
-
+from keyinp import get_special_key
 
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -121,6 +121,26 @@ def strweight(s):
         if ch not in [' ', '\n']:
             return True
     return False
+
+
+def arrow_choice(objects, title=None):
+    choice = 0
+    while True:
+        clear()
+        if title is not None:
+            show_title(title)
+        for i, obj in enumerate(objects):
+            prefix = '> ' if choice == i else ''
+            print(prefix + obj)
+        key = get_special_key()
+        if key == 'up_arrow':
+            if choice > 0:
+                choice -= 1
+        elif key == 'down_arrow':
+            if choice < len(objects) - 1:
+                choice += 1
+        elif key == 'enter':
+            return choice
 
 
 class Scene:
