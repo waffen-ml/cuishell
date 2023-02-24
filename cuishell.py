@@ -14,7 +14,7 @@ def confirm(title):
 
 def _construct_title(s, alt=False):
     starting = '//' if alt else '#'
-    ending = '' if s[-1] in punctuation else ':'
+    ending = '' if s[-1] in punctuation or alt else ':'
     return starting + ' ' + s + ending
 
 
